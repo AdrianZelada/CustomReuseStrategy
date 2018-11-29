@@ -1,0 +1,21 @@
+<section class="todoapp">
+  <header class="header">
+    <h1>Albums</h1>
+    <input class="new-todo" placeholder="Search" autofocus [(ngModel)]="queryString">
+  </header>
+  <ng-container *ngIf="(list$ | async | filterdata: queryString : 'title') as items">
+    <section class="main">
+      <ul class="todo-list">
+        <li *ngFor="let item of items; let i = index;" (click)="goItem(item)">
+          <div class="view">
+            <p class="label-number"> {{i+1}}.</p>
+            <p class="label-title">{{item.title}}</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <footer class="footer">
+      <span class="todo-count"><strong>{{items.length}}</strong> Albums</span>
+    </footer>
+  </ng-container>
+</section>

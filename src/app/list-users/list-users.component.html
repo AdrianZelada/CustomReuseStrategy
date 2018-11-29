@@ -1,0 +1,24 @@
+<section class="todoapp">
+  <header class="header">
+    <h1>Users</h1>
+    <input class="new-todo" placeholder="Search" autofocus [(ngModel)]="queryString">
+  </header>
+  <section class="main" *ngIf="(list$ | async | filterdata: queryString : 'first_name') as items">
+    <ul class="todo-list">
+      <li *ngFor="let item of items" (click)="goItem(item)">
+        <div class="view-avatar">
+          <img [src]="item.avatar" alt="">
+          <p>{{item.first_name}} {{item.last_name}}</p>
+        </div>
+      </li>
+    </ul>
+    <div class="pagination pagination-number">
+      <ul>
+        <li [ngClass]="{'active':pageSelect == i+1, 'inactive':pageSelect != i+1}" *ngFor="let item of paginations; let i=index;"><a (click)="filterPage(i+1)">{{i+1}}</a></li>
+      </ul>
+    </div>
+  </section>
+  <footer class="footer">
+    <span class="todo-count"><strong>{{total}}</strong> Users</span>
+  </footer>
+</section>

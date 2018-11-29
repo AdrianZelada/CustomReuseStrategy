@@ -1,0 +1,18 @@
+.view{
+  width: 100%;
+  display: inline-flex;
+}
+
+.view > .label-number {
+  width: 10%;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+}
+
+.view > .label-title{
+  width: 85%;
+  float: right;
+}
+
+

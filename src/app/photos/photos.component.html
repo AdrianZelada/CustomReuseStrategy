@@ -1,0 +1,8 @@
+<section class="todoapp">
+  <header class="header">
+    <h1>Photos</h1>
+  </header>
+  <section class="main" *ngIf="(list$ | async) as items">
+    <img [src]="item.url" alt="" *ngFor="let item of items" width="110px" height="110px">
+  </section>
+</section>
