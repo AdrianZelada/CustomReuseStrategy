@@ -22,7 +22,7 @@ export class AlbumsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("ngOnInit albums")
+    console.log("ngOnInit albums");
     this.list$ = this.route.paramMap.pipe(
       switchMap((data: any) => {
         const params = data.params || {};
