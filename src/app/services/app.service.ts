@@ -7,8 +7,8 @@ import {map} from 'rxjs/operators';
 })
 export class AppService {
 
-  host: string = 'https://reqres.in/api';
-  hostPlaceholder: string = 'https://jsonplaceholder.typicode.com';
+  host: String = 'https://reqres.in/api';
+  hostPlaceholder: String = 'https://jsonplaceholder.typicode.com';
 
   constructor(private http: HttpClient) {
   }
@@ -17,8 +17,12 @@ export class AppService {
     return this.http.get(`${this.host}/users?per_page=6&page=${page}`);
   }
 
-  listAlbums(userId: any) {
-    return this.http.get(`${this.hostPlaceholder}/albums?userId=${userId}`);
+  singleUser(user: any) {
+    return this.http.get(`${this.host}/users/${user}`).pipe(
+      map((response: any) => {
+        return response.data || {};
+      })
+    );
   }
 
   listPhotos(albumId: any) {
@@ -26,7 +30,7 @@ export class AppService {
       .get(`${this.hostPlaceholder}/photos?albumId=${albumId}`)
       .pipe(
         map((result: Array<any>) => {
-          return result.slice(0, 5);
+          return result.slice(0, 20);
         })
       );
   }

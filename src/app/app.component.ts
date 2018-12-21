@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Router , NavigationEnd} from '@angular/router';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'reuseStrategy';
+  constructor (private router: Router) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((route: any) => {
+      console.log(`%c Route ======>  %c ${route.url}`, 'color:red;', 'color: blue');
+    });
+  }
 }

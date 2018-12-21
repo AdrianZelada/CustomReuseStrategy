@@ -3,6 +3,14 @@
     <h1>Photos</h1>
   </header>
   <section class="main" *ngIf="(list$ | async) as items">
+    <ul class="todo-list">
+      <li class="content-item">
+        <div class="view-avatar todo-item">
+          <img [src]="user.avatar" alt="">
+          <p>{{user.first_name}} {{user.last_name}}</p>
+        </div>
+      </li>
+    </ul>
     <img [src]="item.url" alt="" *ngFor="let item of items" width="110px" height="110px">
   </section>
 </section>
