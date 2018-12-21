@@ -14,10 +14,10 @@ export class ListUsersComponent implements OnInit {
   private list: Subject<any> = new Subject();
   public list$: Observable<any> = this.list.asObservable();
   public paginations: Array<any> = [];
-  public pageSelect: number = 1;
-  public total: number = 0;
-
-  public queryString: string ="";
+  public pageSelect = 1;
+  public total: number;
+  public queryString: string;
+  public userSelect: number;
   constructor(
     private router: Router,
     private appService: AppService
@@ -28,7 +28,11 @@ export class ListUsersComponent implements OnInit {
   ngOnInit() {}
 
   goItem(item: any) {
-    this.router.navigate([`./users/${item.id}/albums`]);
+    // this.router.navigate([`./users/${item.id}/albums`]);
+    this.userSelect = item.id;
+    setTimeout(() => {
+      this.router.navigate([`./users/${item.id}/photos`]);
+    }, 10);
   }
 
   filterPage(page: any) {

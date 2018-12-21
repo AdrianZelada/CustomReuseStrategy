@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,13 @@ export class AppService {
     return this.http.get(`${this.hostPlaceholder}/albums?userId=${userId}`);
   }
 
-  listPhotos(albumId: any){
-    return this.http.get(`${this.hostPlaceholder}/photos?albumId=${albumId}`);
+  listPhotos(albumId: any) {
+    return this.http
+      .get(`${this.hostPlaceholder}/photos?albumId=${albumId}`)
+      .pipe(
+        map((result: Array<any>) => {
+          return result.slice(0, 5);
+        })
+      );
   }
 }

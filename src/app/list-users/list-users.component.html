@@ -5,8 +5,8 @@
   </header>
   <section class="main" *ngIf="(list$ | async | filterdata: queryString : 'first_name') as items">
     <ul class="todo-list">
-      <li *ngFor="let item of items" (click)="goItem(item)">
-        <div class="view-avatar">
+      <li *ngFor="let item of items" class="content-item" (click)="goItem(item)">
+        <div class="view-avatar todo-item" [ngClass]="{'active-item':userSelect === item.id}" >
           <img [src]="item.avatar" alt="">
           <p>{{item.first_name}} {{item.last_name}}</p>
         </div>

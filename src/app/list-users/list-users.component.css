@@ -50,7 +50,7 @@ a {
 }
 .pagination-number a {
   display: inline-block;
-  background: #e7153d;
+  background: rgba(175, 47, 47, 0.6);
   border: 0;
   font-size: 20px;
   font-weight: 800;
@@ -59,4 +59,26 @@ a {
   text-transform: uppercase;
   padding: 0 20px;
   font-family: "Roboto";
+}
+
+.content-item{
+  background: white;
+  z-index: 100;
+}
+
+.todo-item{
+  transition: transform .2s;
+  background: white;
+  border: 1px solid rgba(85,180,255,0.3);
+  z-index: 100;
+}
+
+.todo-item:hover{
+  z-index: 200;
+  transform: scale(1.1);
+}
+
+.active-item{
+  z-index: 200;
+  background: rgba(175, 47, 47, 0.1);
 }
